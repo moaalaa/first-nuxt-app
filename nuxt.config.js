@@ -1,4 +1,4 @@
-import pkg from './package'
+import pkg from './package';
 
 export default {
   mode: 'universal',
@@ -27,6 +27,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/app.scss',
   ],
 
   /*
