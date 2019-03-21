@@ -1,6 +1,6 @@
 <template>
     <div class="post">
-        <h2 class="post__title">
+        <h2 class="post__title" >
             <nuxt-link :to="{name: 'posts-id', params: {id: post.id} }" v-text="post.title"></nuxt-link>
         </h2>
 
@@ -12,6 +12,7 @@
 export default {
     props: {
         post: Object,
+        single: Boolean
     }
 }
 </script>

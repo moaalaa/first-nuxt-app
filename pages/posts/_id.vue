@@ -1,6 +1,6 @@
 <template>
     <div>
-        <post :post="post"></post>
+        <post :post="post" :single="true"></post>
     </div> 
 </template>
 
@@ -9,6 +9,7 @@ import axios from 'axios';
 import Post from '@/components/Post';
 
 export default {
+    layout: 'posts',
     components: {
         Post,
     },
@@ -17,14 +18,28 @@ export default {
             post: {}
         };
     },
-    async asyncData({ params }) {
+    head() {
+        return {
+            title: 'Posts | ' + this.post.title,
+        };
+    },
+    async asyncData({ params, error }) {
+
         console.log(params);
         
-        let res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
-        
-        return { 
-            post: res.data
-        };
+        try {
+            let res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+            
+            return { 
+                post: res.data
+            };
+
+        } catch (e) {
+            error({
+                statusCode: e.response.status,
+                message: 'error'
+            })
+        }
     },
 }
 </script>

@@ -1,6 +1,8 @@
 <template>
     <div>
-        <post v-for="post in posts" :key="post.id" :post="post"></post>
+        <post v-for="post in posts" :key="post.id" :post="post" :single="false"></post>
+
+        <a href="#" v-scroll-to="'body'">To Top</a>
     </div>
 </template>
 
@@ -16,6 +18,9 @@ export default {
         return {
             posts: []
         };
+    },
+    head: {
+        title: 'Posts'
     },
     // asyncData() {
     //     return axios.get('https://jsonplaceholder.typicode.com/posts').then(({data}) => {

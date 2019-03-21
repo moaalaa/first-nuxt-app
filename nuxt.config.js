@@ -14,7 +14,9 @@ export default {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'},
     ]
   },
 
@@ -34,6 +36,11 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/scrollTo',
+    {
+      src: '@/plugins/vueSelect',
+      ssr: false,
+    }
   ],
 
   /*
